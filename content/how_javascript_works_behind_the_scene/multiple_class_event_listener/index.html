@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 style="text-align: center; text-transform: uppercase;">Multiple class event manage</h2>
+    <button data-val='Mahendra' class="btn">button1</button>
+    <button data-val='Ajay' class="btn">button2</button>
+    <button data-val='Rupesh' class="btn">button3</button>
+</body>
+</html>
+<script>
+    window.addEventListener('load',function(){
+        const btns = document.querySelectorAll('.btn');
+        console.log(btns);
+        for(btn of btns){
+            btn.addEventListener('click',function(event){
+                alert(event.target.getAttribute('data-val'));
+            })
+        }
+    })
+</script>
