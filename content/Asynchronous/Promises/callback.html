@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <h2 style="text-transform: uppercase;text-align: center;">Callback</h2>
+        <h3 style="text-align: center; text-transform: uppercase;">Flow of events</h3>
+        <ul>
+            <li>Register</li>
+            <li>Send welcome email</li>
+            <li>Login</li>
+            <li>Get user data</li>
+            <li>Display User data</li>
+        </ul>    
+    </div>
+</body>
+</html>
+<script>
+'use strict';
+const register = (cb) =>{
+    setTimeout(()=>{
+        console.log('Register end');
+        cb();
+    },5000)
+}
+const send_welcome_email = (cb) =>{
+    console.log('Send welcome Email end');
+    cb();
+
+}
+const login = (cb) =>{
+    setTimeout(() => {
+        console.log('Login end');
+        cb();
+    }, 1000);    
+}
+const get_user_data = (cb) =>{
+    setTimeout(() => {
+        console.log('Get user data');
+        cb();
+    }, 1000);
+}
+const display_user_data = () =>{
+    console.log('display user data end');
+}
+
+// callback hell
+register(()=>{
+    send_welcome_email(()=>{
+        login(()=>{
+            get_user_data(()=>{
+                display_user_data();
+            });
+        });
+    });
+});
+console.log('Other application works!')
+</script>
